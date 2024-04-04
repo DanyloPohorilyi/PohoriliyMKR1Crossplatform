@@ -1,0 +1,48 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Модульний контроль. Виконав Погорілий Данило
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+
+  </ion-header>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Модульний контроль. Варіант 3</ion-card-subtitle>
+      <ion-card-title>Завдання</ion-card-title>
+      <ion-text>
+        <p>Розробити сервіс для арифметичних операцій (додавання, віднімання, скалярний добуток) над векторами довільної
+          розмірності.
+          Форма для введення повинна спочатку запитати розмірність векторів, після чого сформувати відповідну кількість
+          полів введення. Максимальна розмірність – 6.
+        </p>
+      </ion-text>
+    </ion-card-header>
+  </ion-card>
+  <app-vector-form (operationResult)="handleOperationResult($event)"></app-vector-form>
+  <ion-content>
+
+    <ion-list *ngFor="let result of operationResults">
+      <ion-card>
+        <ion-card-content>
+          <ion-item>
+            <ion-label>Операція: {{ result.operation }}</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label>Перший вектор значення: ({{ result.vector1Values }})</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label>Другий вектор значення: ({{ result.vector2Values }})</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label>Результат: ({{ result.result }})</ion-label>
+          </ion-item>
+        </ion-card-content>
+      </ion-card>
+    </ion-list>
+
+  </ion-content>

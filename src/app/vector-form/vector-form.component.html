@@ -1,0 +1,28 @@
+<form [formGroup]="vectorForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="dimensions">Розмірність векторів:</label>
+    <input type="number" id="dimensions" formControlName="dimensions" min="1" max="6" required>
+  </div>
+
+  <div *ngFor="let control of vectorControls1; let i = index">
+    <label for="vector1_coord{{i + 1}}">Координата {{i + 1}} (вектор 1):</label>
+    <input type="number" id="vector1_coord{{i + 1}}" formControlName="{{ 'vector1_coord' + (i + 1) }}" required>
+  </div>
+
+  <div *ngFor="let control of vectorControls2; let i = index">
+    <label for="vector2_coord{{i + 1}}">Координата {{i + 1}} (вектор 2):</label>
+    <input type="number" id="vector2_coord{{i + 1}}" formControlName="{{ 'vector2_coord' + (i + 1) }}" required>
+  </div>
+
+  <div>
+    <label for="operation">Оберіть операцію:</label>
+    <select id="operation" formControlName="operation" required>
+      <option value="">Виберіть операцію</option>
+      <option value="addition">Додавання</option>
+      <option value="subtraction">Віднімання</option>
+      <option value="dotProduct">Скалярний добуток</option>
+    </select>
+  </div>
+
+  <button type="submit">Виконати операцію</button>
+</form>
